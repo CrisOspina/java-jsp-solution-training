@@ -14,7 +14,7 @@ public class TipoVehiculoDAO {
   public static boolean insertarTipoVehiculo(TipoVehiculo tv){
     try {
       Connection con = LibreriaConexion.conexionDB();
-      String SQLInsertTiposDeVehiculo = "INSERT INTO tipovehiculo (idTv, nombreTv) VALUES (?,?)";
+      String SQLInsertTiposDeVehiculo = "INSERT INTO tipovehiculo (id, nombre) VALUES (?,?)";
       
       PreparedStatement ps = con.prepareStatement(SQLInsertTiposDeVehiculo);
       
@@ -32,7 +32,7 @@ public class TipoVehiculoDAO {
   public static ArrayList<TipoVehiculo> listarTipoVehiculos(){
     try {
       Connection con = LibreriaConexion.conexionDB();
-      String SQLReadTiposDeVehiculo = "SELECT idTv, nombreTv FROM tipovehiculo";
+      String SQLReadTiposDeVehiculo = "SELECT id, nombre FROM tipovehiculo";
       PreparedStatement ps = con.prepareStatement(SQLReadTiposDeVehiculo);
       
       ResultSet resultado = ps.executeQuery();
@@ -42,8 +42,8 @@ public class TipoVehiculoDAO {
       
       while (resultado.next()) {        
         tipoVehiculo = new TipoVehiculo();
-        tipoVehiculo.setIdtv(resultado.getInt("idTv"));
-        tipoVehiculo.setNombreTipoVehiculo(resultado.getString("nombreTv"));
+        tipoVehiculo.setIdtv(resultado.getInt("id"));
+        tipoVehiculo.setNombreTipoVehiculo(resultado.getString("nombre"));
         lista.add(tipoVehiculo);
       }
       
