@@ -70,7 +70,7 @@
                       Placa del vehiculo
                     </label>
                     <div class="col-sm-9">
-                      <input type="text" name="txtplacaVehi" value="" placeholder="">
+                      <input type="text" name="txtPlacaVehi" value="" placeholder="">
                     </div>
                   </div>
                   <div class="form-group">
@@ -78,7 +78,7 @@
                       Marca del vehiculo
                     </label>
                     <div class="col-sm-9">
-                      <input type="text" name="txtmarcaVehi" value="" placeholder="">
+                      <input type="text" name="txtMarca" value="" placeholder="">
                     </div>
                   </div>
                   <div class="form-group">
@@ -86,7 +86,7 @@
                       Referencia del vehiculo
                     </label>
                     <div class="col-sm-9">
-                      <input type="text" name="txtreferenciaVehi" value="" placeholder="">
+                      <input type="text" name="txtReferencia" value="" placeholder="">
                     </div>
                   </div>
                   <div class="form-group">
@@ -94,7 +94,17 @@
                       Modelo del vehiculo
                     </label>
                     <div class="col-sm-9">
-                      <input type="text" name="txtmodeloVehi" value="" placeholder="">
+                      <input type="text" name="txtModel" value="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">
+                      Id TV
+                    </label>
+                    <div class="col-sm-9">
+                      <select name="txtIdTv">
+                        <option></option>
+                      </select>
                     </div>
                   </div>
                   <button class="btn btn-primary btn-block" type="submit">

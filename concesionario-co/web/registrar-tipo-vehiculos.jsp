@@ -61,16 +61,20 @@
             <div class="col-xs-12">
               <div class="table-header mb-4">
                 Registro tipos de vehiculos
+                <!-- Mensaje de validación de inserción de nuevo registro -->
+                <div class="text-center">
+                  <%= (request.getAttribute("mensaje") != null ? request.getAttribute("mensaje") : "")%>
+                </div>
               </div>
 
               <div class="container" style="display: flex; justify-content: center;">
-                <form action="action" class="form-horizontal">
+                <form action="TipoVehiculo" method="post" class="form-horizontal">
                   <div class="form-group">
                     <label class="control-label no-padding-right">
                       ID - tipo vehiculo
                     </label>
                     <div class="form-group">
-                      <input type="text" name="txtidtv" value="" placeholder="">
+                      <input type="text" name="idTv" value="" placeholder="">
                     </div>
                   </div>
                   <div class="form-group">
@@ -78,7 +82,7 @@
                       Nombre - tipo vehiculo
                     </label>
                     <div class="form-group">
-                      <input class="" type="text" name="txtidtv" value="" placeholder="">
+                      <input class="" type="text" name="nombreTv" value="" placeholder="">
                     </div>
                     <button class="btn btn-primary btn-block" type="submit">
                       <i class="fa fa-save"> Registrar</i>
