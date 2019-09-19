@@ -20,15 +20,16 @@ public class LibreriaConexion {
       
       // Configurar la conexión
       Class.forName(dbDriver);
-      Connection conex = DriverManager.getConnection(dbURL + dbName, dbUser + dbUser, password + password);
+      Connection conex = DriverManager.getConnection(dbURL + dbName, dbUser, password);
       
       return conex;
       
     } catch(ClassNotFoundException | SQLException ex){
       return null;
     }
-    
-    // Comprobar conexión
+  }
+  
+   // Comprobar conexión
     /*Connection con = null;
     public LibreriaConexion(){
       try {
@@ -48,5 +49,4 @@ public class LibreriaConexion {
     public Connection getConnection(){
       return con;
     }*/
-  }
 }
