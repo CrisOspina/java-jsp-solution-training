@@ -1,3 +1,5 @@
+<%@page import="modelo.TipoVehiculo"%>
+<%@page import="dao.TipoVehiculoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -61,10 +63,14 @@
             <div class="col-xs-12">
               <div class="table-header mb-4">
                 Registro tipos de vehiculos
+                <!-- Mensaje de validación de inserción de nuevo registro -->
+                <div class="text-center">
+                  <%= (request.getAttribute("mensaje") != null ? request.getAttribute("mensaje") : "")%>
+                </div>
               </div>
               <br><br>
-              <div class="container" style="display: flex; justify-content: center;">
-                <form action="action" class="form-horizontal">
+              <div class="container-flex" style="display: flex; justify-content: center;">
+                <form action="Vehiculo" method="post" class="form-horizontal">
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right">
                       Placa del vehiculo
@@ -99,16 +105,44 @@
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right">
-                      Id TV
+                      Tipo de vehiculo
                     </label>
                     <div class="col-sm-9">
                       <select name="txtIdTv">
-                        <option></option>
+                        <option value="0">
+                          Seleccione un tipo de vehiculo
+                        </option>
+
+                        <% for (TipoVehiculo tv : TipoVehiculoDAO.listarTipoVehiculos()) {%>
+                        <option value="<%= tv.getIdtv()%>"> <%= tv.getNombreTipoVehiculo()%> </option>
+                        <% }%>
+
                       </select>
                     </div>
                   </div>
-                  <button class="btn btn-primary btn-block" type="submit">
+
+                  <button
+                    value="Registrar"
+                    name="accion"
+                    class="btn btn-primary"
+                    type="submit">
                     <i class="fa fa-save"> Registrar</i>
+                  </button>
+
+                  <button
+                    value="Actualizar"
+                    name="accion"
+                    class="btn btn-warning"
+                    type="submit">
+                    <i class="fa fa-edit"> Actualizar</i>
+                  </button>
+
+                  <button
+                    value="Eliminar"
+                    name="accion"
+                    class="btn btn-danger"
+                    type="submit">
+                    <i class="fa fa-clock-o"> Eliminar</i>
                   </button>
                 </form>
               </div>
