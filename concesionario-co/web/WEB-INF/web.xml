@@ -8,6 +8,10 @@
         <servlet-name>VehiculoControlador</servlet-name>
         <servlet-class>controlador.VehiculoControlador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TipoConductorControlador</servlet-name>
+        <servlet-class>controlador.TipoConductorControlador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TipoVehiculoControlador</servlet-name>
         <url-pattern>/TipoVehiculo</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>VehiculoControlador</servlet-name>
         <url-pattern>/Vehiculo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoConductorControlador</servlet-name>
+        <url-pattern>/TipoConductor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
