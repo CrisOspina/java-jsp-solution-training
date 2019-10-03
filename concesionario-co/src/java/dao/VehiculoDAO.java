@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import modelo.Vehiculo;
 
 public class VehiculoDAO {
+  
   // Create = Insertar
   public static boolean insertarVehiculo(Vehiculo vehiculo){
     try {
       Connection con = LibreriaConexion.conexionDB();
-      String SQLInsertVehiculo = "INSERT INTO vehiculo (placa-vehiculo, marca, referencia-vehiculo, modelo, id-tipo-vehiculo) VALUES (?,?,?,?,?)";
+      String SQLInsertVehiculo = "INSERT INTO vehiculo VALUES (?,?,?,?,?)";
       
       PreparedStatement ps = con.prepareStatement(SQLInsertVehiculo);
       
@@ -56,6 +57,76 @@ public class VehiculoDAO {
       
     } catch (SQLException e) {
       return null;
+    }
+  }
+  
+  // Actualizar
+  public static boolean actualizarVehiculo(Vehiculo v){
+    try {
+      Connection con = LibreriaConexion.conexionDB();
+      String SQLUpdate = "update vehiculo set " +
+                    "    marca=?," +
+                    "    referencia-vehiculo=?," +
+                    "    modelo=?," +
+                    "     id-tipo-vehiculo=?" +
+                    "    where placa-vehiculo=?";
+      
+      PreparedStatement ps = con.prepareStatement(SQLUpdate);
+      
+      ps.setString(1, v.getMarca());
+      ps.setString(2, v.getReferenciaVehiculo());
+      ps.setInt(3, v.getModelo());
+      ps.setInt(4, v.getIdTipoVehiculo());
+      ps.setString(5, v.getPlacaVehiculo());
+      
+      if(ps.executeUpdate() > 0){
+        return true;
+      } else {
+        return false;
+      }
+      
+    } catch (SQLException e) {
+      return false;
+    }
+  }
+  
+  // Eliminar - formulario de registro desde la placa
+  public static boolean eliminarVehiculo(Vehiculo v){
+    try {
+      Connection con = LibreriaConexion.conexionDB();
+      String SQLDelete = "delete from vehiculo where placa-vehiculo=?";
+      
+      PreparedStatement ps = con.prepareStatement(SQLDelete);
+      
+      ps.setString(1, v.getPlacaVehiculo());
+      
+      if(ps.executeUpdate() > 0){
+        return true;
+      } else {
+        return false;
+      }
+      
+    } catch (SQLException e) {
+       return false;
+    }
+  }
+  
+  // Eliminar vehiculo desde listar
+  public static boolean eliminarVehiculoListar(String placaVehiculo){
+    String SQL = "delete from vehiculo where placa-vehiculo =" + placaVehiculo;
+    
+    try {
+      Connection con = LibreriaConexion.conexionDB();
+      PreparedStatement ps = con.prepareStatement(SQL);
+      
+      if(ps.executeUpdate() > 0){
+        return true;
+      } else {
+        return false;
+      }
+      
+    } catch (SQLException e) {
+      return false;
     }
   }
 }
