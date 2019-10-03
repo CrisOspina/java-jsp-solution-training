@@ -53,4 +53,29 @@ public class TipoVehiculoDAO {
       return null;
     }
   }
+  
+  // Mostrar los tipos de vehiculos  -------------------------------------------------------------------
+  public static String getTipoVehiculo(int idTv){
+    try {
+      String sqlTvForVehi = "select nombre from tipovehiculo where id=?";
+      Connection con = LibreriaConexion.conexionDB();
+      PreparedStatement ps = con.prepareStatement(sqlTvForVehi);
+      
+      //Enviar el parametro idtv
+      ps.setInt(1, idTv);
+      ResultSet resultado = ps.executeQuery();
+      
+      //verificar si existen los tv y traer su nombre
+      if(resultado.next()){
+        return resultado.getString("nombre");
+      }
+      
+      return "--";
+      
+    } catch (SQLException ex) {
+      return "--";
+    }
+  }
+    
+  
 }
