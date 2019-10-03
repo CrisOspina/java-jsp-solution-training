@@ -14,7 +14,6 @@ public class VehiculoControlador extends HttpServlet {
           throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
     try (PrintWriter out = response.getWriter()) {
-     
     }
   }
 
@@ -54,12 +53,33 @@ public class VehiculoControlador extends HttpServlet {
         if(VehiculoDAO.insertarVehiculo(vehiculo)){
           request.setAttribute("mensaje", " 👉 Vehiculo registrado ✔ ");
         } else {
-          request.setAttribute("mensaje", " 👉 Vehiculo NO registrado ❌ ");
+          request.setAttribute("mensaje", " 👉 Vehiculo NO registrado, verifica ❌ ");
         }
         break;
       case "actualizar":
+        if(VehiculoDAO.actualizarVehiculo(vehiculo)){
+          request.setAttribute("mensaje", " 👉 Vehiculo actualizado ✔ ");
+        } else {
+          request.setAttribute("mensaje", " 👉 Vehiculo NO actualizado, verifica ❌ ");
+        }
+        break;
+      case "eliminar":
+        if(VehiculoDAO.eliminarVehiculo(vehiculo)){
+          request.setAttribute("mensaje", " 👉 Vehiculo eliminado ✔ ");
+        } else {
+          request.setAttribute("mensaje", " 👉 Vehiculo NO eliminado, verifica ❌ ");
+        }
+      case "eliminarListar":
+        String placaUno = request.getParameter("txtVuno");
+        vehiculo.setPlacaVehiculo(placaUno);
+        VehiculoDAO.eliminarVehiculoListar(placaUno);
+        request.getRequestDispatcher("listar-vehiculos.jsp");
+        break;
+      default:
+        request.setAttribute("mensaje", "Acción no valida  🤦‍♂️");
         break;
     }
+    request.getRequestDispatcher("registrar-vehiculos.jsp").forward(request, response);
   }
 
   @Override
