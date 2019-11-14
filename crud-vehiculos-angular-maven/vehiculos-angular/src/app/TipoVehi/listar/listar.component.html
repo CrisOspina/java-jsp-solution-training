@@ -1,0 +1,33 @@
+<!-- <p>
+  listar works!
+</p> -->
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>Tipos de Vehículo</h3>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Id Tipo</th>
+            <th>Nombre Tipo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tipovehiculo of tipovehiculos" class="text-center">                  
+            <td>{{tipovehiculo.idtv}}</td>
+            <td>{{tipovehiculo.nomtv}}</td>
+            <td>
+              <button (click)="Editar(tipovehiculo)" class="btn btn-warning">Editar</button>
+              <!-- Luego de poner el metodo editar, ir al archivo service.service y crear los metodos
+              getTipovehiculoId() y updateTipovehiculo()  -->
+              <button (click)="Delete(tipovehiculo)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<!-- <p>
+  add works!
+</p> -->
+<div class="container col-md-6">
+  <div class="card">
+    <div class="card-header">
+      <h3>Agregar Tipos de Vehículo</h3>
+    </div>
+    <div class="card-body">
+        <!-- [hidden]="submitted" -->
+        <!-- Luego agregamos los derivados ngForm y ngSubmit.
+        ngForm se activa cuando el usuario hace clic en el botón enviar,
+        mientras que ngSubmit especifica qué función ejecutar cuando se envía el formulario.
+          (ngSubmit)="onSubmit(userForm)" #userForm="ngForm" -->
+      <form action="">
+        <div class="form-group">
+            <!-- Los formularios controlados por plantillas son impulsados por derivados en la plantilla.
+            Esto significa que verás derivados como ngModel en la plantilla en lugar del código. -->
+          <label for="">Id Tipo</label>
+          <!-- <input name="idtv" id="idtv" type="text" [(ngModel)]="tipovehiculo.idtv" class="form-control" #idtv="ngModel"> -->
+          <input [(ngModel)]="tipovehiculo.idtv" name="idtv" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Nombre Tipo</label>
+          <!-- <input name="nomtv" id="nomtv" type="text" [(ngModel)]="tipovehiculo.nomtv" class="form-control" #nomtv="ngModel"> -->
+          <input [(ngModel)]="tipovehiculo.nomtv" name="nomtv" type="text" class="form-control">
+        </div>
+        <button (click)="Guardar()" class="btn btn-success">Guardar</button>
+        <!-- <input value="Guardar" type="submit" (click)="Guardar()" class="btn btn-success"/> -->
+        <!-- <button type="submit" class="btn btn-success">Guardar</button> -->
+      </form>
+    </div>
+    <!-- <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+    </div> -->
+  </div>
+</div>
+
+<!-- Luego ir al archivo service.service y crear el metodo createTipovehiculos() -->
